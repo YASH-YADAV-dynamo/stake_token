@@ -7,7 +7,7 @@ async function main() {
 
   // Deploy MyToken
   const MyToken = await hre.ethers.getContractFactory("MyToken");
-  const myToken = await MyToken.deploy("1000000000000000000000000"); // 1 million tokens
+  const myToken = await MyToken.deploy("1000000000000000000000000"); 
   await myToken.waitForDeployment();
 
   console.log("MyToken deployed to:", await myToken.getAddress());
@@ -19,7 +19,7 @@ async function main() {
 
   console.log("Staking contract deployed to:", await staking.getAddress());
 
-  // Optional: Transfer some tokens to the Staking contract
+  // Transfer some tokens to the Staking contract
   const transferAmount = "100000000000000000000000"; // 100,000 tokens
   await myToken.transfer(await staking.getAddress(), transferAmount);
   console.log(`Transferred ${transferAmount} tokens to the Staking contract`);
